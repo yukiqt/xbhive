@@ -7,12 +7,16 @@
     "withGlobalTauri": true
   },
   "package": {
-    "productName": "XBHive Manager",
-    "version": "0.0.1"
+    "productName": "cock",
+    "version": "0.0.0"
   },
   "tauri": {
     "allowlist": {
-      "all": true
+      "all": false,
+      "shell": {
+        "all": false,
+        "open": true
+      }
     },
     "bundle": {
       "active": true,
@@ -29,7 +33,7 @@
         "icons/icon.icns",
         "icons/icon.ico"
       ],
-      "identifier": "dev.yuki.xbhive",
+      "identifier": "com.tauri.dev",
       "longDescription": "",
       "macOS": {
         "entitlements": null,
@@ -55,13 +59,11 @@
     },
     "windows": [
       {
-        "label": "main",
         "fullscreen": false,
         "height": 600,
-        "width": 800,
         "resizable": true,
-        "title": "XBHive Manager",
-        "url": "https://www.thehiveforums.com/admin_e.php?xbhm/user-manager/"
+        "title": "cock",
+        "width": 800
       }
     ]
   }
