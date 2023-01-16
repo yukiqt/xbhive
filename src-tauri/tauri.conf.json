@@ -53,16 +53,6 @@
     "updater": {
       "active": false
     },
-    "windows": [
-      {
-        "label": "main",
-        "fullscreen": false,
-        "height": 600,
-        "width": 800,
-        "resizable": true,
-        "title": "XBHive Manager",
-        "url": "https://www.thehiveforums.com/admin_e.php?xbhm/user-manager/"
-      }
-    ]
+    "windows": []
   }
 }
