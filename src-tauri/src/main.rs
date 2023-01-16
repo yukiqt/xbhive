@@ -1,4 +1,8 @@
-//use tauri_utils::config::{Config, WindowConfig};
+#![cfg_attr(
+    all(not(debug_assertions), target_os = "windows"),
+    windows_subsystem = "windows"
+)]
+
 use tauri::Manager;
 
 #[allow(unused_must_use)]
