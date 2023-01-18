@@ -42,7 +42,7 @@ jobs:
         id: read_file
         uses: andstor/file-reader-action@v1
         with:
-          path: "src-tauri/config.tauri.json"
+          path: "src-tauri/tauri.conf.json"
 
       - name: "[DEBUG] Echo tauri config"
         run: echo "${ steps.read_file.outputs.contents }"
