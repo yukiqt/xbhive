@@ -16,8 +16,8 @@ fn main() {
                 tauri::WindowUrl::External("https://www.thehiveforums.com/admin_e.php?xbhm/user-manager/".parse().unwrap())
               )
               .initialization_script(include_str!("./preload.js"))
+              .title("XBHive Manager")
               .build().unwrap();
-              main_window.set_title("XBHive Manager");
             Ok(())
         })
         .run(tauri::generate_context!())
