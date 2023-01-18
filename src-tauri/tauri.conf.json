@@ -52,7 +52,12 @@
       "csp": null
     },
     "updater": {
-      "active": false
+      "active": true,
+      "endpoints": [
+          "https://xbhive.com/updater/{{target}}/{{current_version}}/"
+      ],
+      "dialog": true,
+      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IEMyMEMyQkY3OThBMDM2OUUKUldTZU5xQ1k5eXNNd255aWZSb1hLZ1ZnQitNVGppeEZWbjhyRkw5b2E0dzlWbk0vaE1tYm5EZS8K"
     },
     "windows": []
   }
