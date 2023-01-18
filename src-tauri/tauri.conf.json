@@ -43,7 +43,12 @@
       "shortDescription": "",
       "targets": "all",
       "windows": {
-        "certificateThumbprint": null,
+        "wix": {
+          "enableElevatedUpdateTask": true,
+          "license": "assets/license.rtf",
+          "dialogImagePath": "assets/dialog.png",
+          "bannerPath": "assets/banner.png"
+        },
         "digestAlgorithm": "sha256",
         "timestampUrl": ""
       }
