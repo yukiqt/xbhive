@@ -38,14 +38,14 @@ jobs:
           old-string: "0.0.1"
           new-string: ${{ steps.semver.outputs.version_tag }}
 
-      - name: "[DEBUG] Read tauri config"
-        id: read_file
-        uses: andstor/file-reader-action@v1
-        with:
-          path: "src-tauri/tauri.conf.json"
+#      - name: "[DEBUG] Read tauri config"
+#        id: read_file
+#        uses: andstor/file-reader-action@v1
+#        with:
+#          path: "src-tauri/tauri.conf.json"
 
-      - name: "[DEBUG] Echo tauri config"
-        run: echo "${{ steps.read_file.outputs.contents }}"
+#      - name: "[DEBUG] Echo tauri config"
+#        run: echo "${{ steps.read_file.outputs.contents }}"
 
       - name: Install dependencies (ubuntu only)
         if: matrix.platform == 'ubuntu-20.04'
