@@ -44,6 +44,16 @@ jobs:
         # uses: Hathoute/semantic-version@3039ecb9dc6bb3a84585cc13e930dca19d9924c8
         uses: PaulHatch/semantic-version@v5.0.3
         id: semver
+        with:
+          enable_prerelease_mode: true
+
+      - name: Update Version
+        uses: jacobtomlinson/gha-find-replace@v2
+        with:
+          find: "0.0.1"
+          replace: ${{ steps.semver.outputs.version_tag }}
+          include: "src-tauri/config.tauri.json"
+          regex: false
   
       - name: Build the app
         uses: tauri-apps/tauri-action@refactor
@@ -51,8 +61,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tagName: ${{ steps.semver.outputs.version }} # This only works if your workflow triggers on new tags.
-          releaseName: 'XBHive Manager v__VERSION__' # tauri-action replaces \_\_VERSION\_\_ with the app version.
+          tagName: ${{ steps.semver.outputs.version_tag }}
+          releaseName: 'XBHive Manager v__VERSION__'
           releaseBody: 'See the assets to download and install this version.'
-          releaseDraft: true
-          prerelease: false
+          releaseDraft: false
+          prerelease: true
