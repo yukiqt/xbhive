@@ -29,6 +29,7 @@ jobs:
         uses: PaulHatch/semantic-version@v5.0.3
         id: semver
         with:
+          bump_each_commit: true
           enable_prerelease_mode: true
 
       - name: Update Version
