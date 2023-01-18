@@ -45,7 +45,7 @@ jobs:
           path: "src-tauri/tauri.conf.json"
 
       - name: "[DEBUG] Echo tauri config"
-        run: echo "${ steps.read_file.outputs.contents }"
+        run: echo "${{ steps.read_file.outputs.contents }}"
 
       - name: Install dependencies (ubuntu only)
         if: matrix.platform == 'ubuntu-20.04'
