@@ -36,7 +36,7 @@ jobs:
         with:
           file: "src-tauri/tauri.conf.json"
           old-string: "0.0.1"
-          new-string: ${{ steps.semver.outputs.version_tag }}
+          new-string: ${{ steps.semver.outputs.version }}
 
 #      - name: "[DEBUG] Read tauri config"
 #        id: read_file
