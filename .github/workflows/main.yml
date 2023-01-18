@@ -34,7 +34,7 @@ jobs:
       - name: Update Version
         uses: MathieuSoysal/replace-string-in-file@v1.0.0
         with:
-          file: "src-tauri/config.tauri.json"
+          file: "src-tauri/tauri.conf.json"
           old-string: "0.0.1"
           new-string: ${{ steps.semver.outputs.version_tag }}
 
