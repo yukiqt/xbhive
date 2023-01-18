@@ -3,6 +3,15 @@ on:
   push:
   workflow_dispatch:
 
+env:
+  CARGO_INCREMENTAL: 0
+  RUST_BACKTRACE: short
+  # RUSTFLAGS: '-D warnings -W unreachable-pub -W rust-2021-compatibility'
+  RUSTFLAGS: '-W unreachable-pub -W rust-2021-compatibility'
+  WTOOLS_AEAD_KEY: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+  TAURI_PRIVATE_KEY: ${{ secrets.TAURI_PRIVATE_KEY }}
+  TAURI_KEY_PASSWORD: ${{ secrets.TAURI_KEY_PASSWORD }}
+
 jobs:
   release:
     strategy:
@@ -28,6 +37,7 @@ jobs:
         uses: swatinem/rust-cache@v2
         with:
           workspaces: './src-tauri -> target'
+          cache-on-failure: true
 
 #      - name: Sync node version and setup cache
 #        uses: actions/setup-node@v3
@@ -38,6 +48,11 @@ jobs:
 #      - name: Install app dependencies and build web
 #        # Remove `&& yarn build` if you build your frontend in `beforeBuildCommand`
 #        run: pnpm && pnpm build # Change this to npm, yarn or pnpm.
+
+      - name: Sign the build
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libgtk-3-dev libwebkit2gtk-4.0-dev libayatana-appindicator3-dev librsvg2-dev
 
       - name: Build the app
         uses: tauri-apps/tauri-action@v0
