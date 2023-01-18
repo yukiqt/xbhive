@@ -23,6 +23,30 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Git Semantic Version
+        # You may pin to the exact commit or the version.
+        # uses: Hathoute/semantic-version@3039ecb9dc6bb3a84585cc13e930dca19d9924c8
+        uses: PaulHatch/semantic-version@v5.0.3
+        id: semver
+        with:
+          enable_prerelease_mode: true
+
+      - name: Update Version
+        uses: MathieuSoysal/replace-string-in-file@v1.0.0
+        with:
+          file: "src-tauri/config.tauri.json"
+          old-string: "0.0.1"
+          new-string: ${{ steps.semver.outputs.version_tag }}
+
+      - name: "[DEBUG] Read tauri config"
+        id: read_file
+        uses: andstor/file-reader-action@v1
+        with:
+          path: "src-tauri/config.tauri.json"
+
+      - name: "[DEBUG] Echo tauri config"
+        run: echo "${ steps.read_file.outputs.contents }"
+
       - name: Install dependencies (ubuntu only)
         if: matrix.platform == 'ubuntu-20.04'
         # You can remove libayatana-appindicator3-dev if you don't use the system tray feature.
@@ -38,22 +62,6 @@ jobs:
         with:
           workspaces: './src-tauri -> target'
           cache-on-failure: true
-
-      - name: Git Semantic Version
-        # You may pin to the exact commit or the version.
-        # uses: Hathoute/semantic-version@3039ecb9dc6bb3a84585cc13e930dca19d9924c8
-        uses: PaulHatch/semantic-version@v5.0.3
-        id: semver
-        with:
-          enable_prerelease_mode: true
-
-      - name: Update Version
-        uses: jacobtomlinson/gha-find-replace@v2
-        with:
-          find: "0.0.1"
-          replace: ${{ steps.semver.outputs.version_tag }}
-          include: "src-tauri/config.tauri.json"
-          regex: false
   
       - name: Build the app
         uses: tauri-apps/tauri-action@refactor
