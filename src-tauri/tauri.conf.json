@@ -45,7 +45,7 @@
       "windows": {
         "wix": {
           "enableElevatedUpdateTask": true,
-          "license": "assets/license.html",
+          "license": "assets/license.rtf",
           "dialogImagePath": "assets/dialog.png",
           "bannerPath": "assets/banner.png"
         },
