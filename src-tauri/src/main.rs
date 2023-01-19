@@ -13,7 +13,7 @@ fn main() {
             tauri::WindowBuilder::new(
                 &handle,
                 "main",
-                tauri::WindowUrl::External("https://www.thehiveforums.com/admin_e.php?xbhm/user-manager/".parse().unwrap())
+                tauri::WindowUrl::External("https://thehiveforums.com/admin_e.php?xbhm/user-manager/".parse().unwrap())
               )
               .initialization_script(include_str!("./preload.js"))
               .title("XBHive Manager")
