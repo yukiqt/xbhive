@@ -65,7 +65,7 @@ jobs:
           cache-on-failure: true
   
       - name: Build the app
-        uses: tauri-apps/tauri-action@refactor
+        uses: tauri-apps/tauri-action@develop
 
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
